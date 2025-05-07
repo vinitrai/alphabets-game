@@ -5,7 +5,7 @@ export default function Dice(props) {
     <motion.button
       className="dice"
       style={{ backgroundColor: props.held ? 'green' : '' }}
-      onClick={props.handleHold}
+      data-id={props.id} 
       whileTap={{ scale: 0.9 }}
       whileHover={{ scale: 1.1 }}
       animate={{ rotate: [0, 360] }}

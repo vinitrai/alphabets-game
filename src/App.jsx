@@ -10,7 +10,8 @@ const alphabet = [
 
 function App() {
   const [dice, setDice] = useState(generateAllLetters());
-  const buttonRef = useRef(null)
+  const buttonRef = useRef(null);
+
   // Helper: generate the full set of 26 dice
   function generateAllLetters() {
     return new Array(26).fill(null).map((_, index) => ({
@@ -27,7 +28,7 @@ function App() {
 
   // Check if all letters match the alphabet
   function checkWin() {
-    return dice.every((die, index) => isCorrectLetter(index, die.value) && die.every(die => die.isHeld));
+    return dice.every((die, index) => isCorrectLetter(index, die.value) && die.isHeld);
   }
 
   const gameWon = checkWin();
@@ -62,43 +63,41 @@ function App() {
       setDice(generateAllLetters());
     }
   }
-  
-  
 
-  // allow manual hold only if letter is not correct
-  function hold(id) {
-    setDice(prevDice =>
-      prevDice.map(die =>
-        die.id === id
-          ? { ...die, isHeld: !die.isHeld }
-          : die
-      )
-    );
+  // Handle click on parent container for event delegation
+  function handleContainerClick(event) {
+    const id = event.target.closest('.dice')?.dataset.id;
+    if (id) {
+      setDice(prevDice =>
+        prevDice.map(die =>
+          die.id === id
+            ? { ...die, isHeld: !die.isHeld }
+            : die
+        )
+      );
+    }
   }
-  
 
   const diceList = dice.map((letter, index) => (
     <Dice
       key={letter.id}
       value={letter.value}
       held={letter.isHeld}
-      handleHold={() => hold(letter.id)}
+      id={letter.id} 
     />
   ));
 
   useEffect(() => {
-    if(gameWon){
-      buttonRef.current.focus()
+    if (gameWon) {
+      buttonRef.current.focus();
     }
   }, [gameWon]);
 
   return (
     <>
-      {
-        gameWon  && <ReactConfetti />
-      }
+      {gameWon && <ReactConfetti />}
       <h1>Alphabets Game</h1>
-      <div className="letter_container">
+      <div className="letter_container" onClick={handleContainerClick}>
         {diceList}
       </div>
       <button className="roll-btn" onClick={rollDice} ref={buttonRef}>
