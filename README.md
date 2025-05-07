@@ -1,12 +1,23 @@
-# React + Vite
+# Alphabets Game
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A fun and interactive React-based game where players arrange letters to match the alphabetical order (A-Z). The game features a dice-rolling mechanism, letter-holding functionality, and a confetti celebration when the player wins!
+This is aimed at kids. (2-5) yrs old
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
+- **Interactive Dice**: Roll 26 dice, each displaying a random letter from A to Z.
+- **Hold Mechanism**: Click a die to hold its letter if it’s in the correct position.
+- **Win Condition**: Arrange all dice to match the alphabet (A-Z) in order.
+- **Confetti Celebration**: Enjoy a confetti animation when you win!
+- **Responsive Design**: Works on desktop and mobile devices.
+- **Animations**: Smooth animations for dice interactions using Framer Motion.
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+Currently, you can run the app locally by following the [Installation](#installation) instructions.
+
+## Installation
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/vinitrai/alphabets-game.git
+   cd alphabets-game
